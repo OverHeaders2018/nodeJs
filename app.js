@@ -65,7 +65,17 @@ app.post('/login', function (req, res, next){
     let email = req.body.email;
     let password = req.body.password;
 
+    let query = "SELECT * FROM users WHERE email = '" + email + "' AND password = '" + password + "'";
 
+    queryDB(query)
+        .then((result) => {
+            console.log(result);
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.send(err);
+        });
 });
 
 app.get('/contracts', function (req, res, next){
