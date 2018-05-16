@@ -47,7 +47,10 @@ app.post('/register', function(req, res, next) {
     let password = req.body.password;
     let device_token = req.body.device_token ? req.body.device_token : null;
 
-    let query = 'INSERT INTO users (email, password, first_name, last_name, phone, device_token) VALUES' ;
+    let query = 'INSERT INTO users (email, password, first_name, last_name, phone, device_token)' +
+        ' VALUES (' + email + ',' + password + ',' + first_name + ',' + last_name + ',' + phone + ',' + device_token + ')' ;
+
+    queryDB()
 });
 
 app.post('/login', function (req, res, next){
