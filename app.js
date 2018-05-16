@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const logger = require('morgan');
+// const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql');
@@ -50,7 +50,15 @@ app.post('/register', function(req, res, next) {
     let query = 'INSERT INTO users (email, password, first_name, last_name, phone, device_token)' +
         ' VALUES (' + email + ',' + password + ',' + first_name + ',' + last_name + ',' + phone + ',' + device_token + ')' ;
 
-    queryDB()
+    queryDB(query)
+        .then((result) => {
+            console.log(result);
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.send(err);
+        });
 });
 
 app.post('/login', function (req, res, next){
