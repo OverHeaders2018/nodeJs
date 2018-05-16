@@ -69,8 +69,13 @@ app.post('/login', function (req, res, next){
 
     queryDB(query)
         .then((result) => {
-            console.log(result);
-            res.send(result);
+            if (result.length > 0) {
+                res.send(result);
+            } else {
+                res.send({
+                    error: 'invalid_credentials'
+                });
+            }
         })
         .catch((err) => {
             console.log(err);
