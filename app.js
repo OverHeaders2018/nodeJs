@@ -82,7 +82,7 @@ app.post('/contracts', function (req, res, next){
 
 
 
-app.set('port', 5000);
+app.set('port', 80);
 
 const server = app.listen(app.get('port'), function() {
    console.log('Connected');
