@@ -2,10 +2,9 @@ const express = require('express');
 const path = require('path');
 // const logger = require('morgan');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cor = require('cors');
 const mysql = require('mysql');
 
-const Web3 = require('web3');
 ​
 let web3 = new Web3(new Web3.providers.HttpProvider('http://bchxee-dns-reg1.westeurope.cloudapp.azure.com:8545'));
 ​
@@ -250,7 +249,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cors());
+app.use(cor());
 
 
 let pool      =    mysql.createConnection({
