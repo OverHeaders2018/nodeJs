@@ -3,14 +3,19 @@ const path = require('path');
 // const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cor = require('cors');
-const mysql = require('mysql');
 
-​
-let web3 = new Web3(new Web3.providers.HttpProvider('http://bchxee-dns-reg1.westeurope.cloudapp.azure.com:8545'));
-​
-let serverWallet = '0x732A6E65688d39cd031A97508C1AF14570149001';
-​
-let privateKey = '01bb32e06b970e773c5176460f9ca9e974bd249998262b7ae742cdb32cf2456d';
+//const mysql = require('mysql');
+const Transaction = require('ethereumjs-tx');
+const ethUtil = require('ethereumjs-util');
+//const fees = require('ethereum-common/params.json');
+//const BN = ethUtil.BN;
+const Web3 = require('web3');
+
+var web3 = new Web3(new Web3.providers.HttpProvider('http://bchxee-dns-reg1.westeurope.cloudapp.azure.com:8545'));
+
+var serverWallet = '0x732A6E65688d39cd031A97508C1AF14570149001';
+
+var privateKey = '01bb32e06b970e773c5176460f9ca9e974bd249998262b7ae742cdb32cf2456d';
 let abi = [
     {
         "constant": false,
@@ -238,9 +243,10 @@ let abi = [
         "stateMutability": "view",
         "type": "function"
     }
-];
-let contractAddress = '0x3e0091b9a67ffe4c3775e5afad0af6fc854b779f';
-let contractInstance = web3.eth.contract(abi).at(contractAddress);
+] ;
+var contractAddress = '0x3e0091b9a67ffe4c3775e5afad0af6fc854b779f';
+var contractInstance = web3.eth.contract(abi).at(contractAddress);
+
 
 const app = express();
 // app.use(logger('common', {
