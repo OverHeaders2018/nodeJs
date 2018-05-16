@@ -85,5 +85,5 @@ app.post('/contracts', function (req, res, next){
 app.set('port', 5000);
 
 const server = app.listen(app.get('port'), function() {
-   conosle.log('Connected');
+   console.log('Connected');
 });
